@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equation Solver</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #317a9e;
+    }
+
+    form {
+      background-color: #235e7c;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+      color: #f5f5f5;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #d8dad8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #8b3fc1;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="inputForm">
+    <label for="input1">Number 1:</label>
+    <input type="text" id="input1" name="input1" placeholder="Enter a number">
+    <label for="input2">Number 2:</label>
+    <input type="text" id="input2" name="input2" placeholder="Enter a number">
+    <button type="button" onclick="calculate()">Calculate</button>
+  </form>
+
+  <form id="resultForm">
+    <label for="result">Result:</label>
+    <input type="text" id="result" name="result" class="result" readonly>
+    <button type="button" onclick="clearFields()">Clear</button>
+  </form>
+
+  <script>
+    function calculate() {
+      var num1 = parseFloat(document.getElementById("input1").value);
+      var num2 = parseFloat(document.getElementById("input2").value);
+      var resultInput = document.getElementById("result");
+
+      if (!isNaN(num1) && !isNaN(num2)) {
+        var result = num1 * num2; // Multiplication
+        resultInput.value = result;
+      } else {
+        resultInput.value = "Invalid input";
+      }
+    }
+
+    function clearFields() {
+      document.getElementById("inputForm").reset();
+      document.getElementById("resultForm").reset();
+    }
+  </script>
+
+</body>
+</html>
